@@ -103,6 +103,7 @@ Focus-area tags (use these exact labels): Empiricism, Scrum Values, Scrum Team, 
 ### Answers and scoring
 
 - Show questions, fronts, or prompts **without** the key.
+- After a quiz, say how to reply with placeholders only: `Reply as 1<letter>, 2<letters separated by spaces>, 3 True or False.` Do not fill those placeholders with option letters or with True or False. A filled example can be the key. Do not copy a sample answer from the user guide into a live quiz.
 - Wait for the user's answers. Then score.
 - Best-answer and true/false: 1 point each.
 - Select-all: 1 point only when the selected set matches exactly. Do not reveal how many options are correct in the stem.

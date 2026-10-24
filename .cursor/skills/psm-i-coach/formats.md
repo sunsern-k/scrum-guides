@@ -40,6 +40,14 @@ Trap: what A, B, and D confuse.
 
 Select-all stem ends with "Select all that apply." True/false is one sentence and the options True and False.
 
+Close the set with placeholders only:
+
+```text
+Reply as 1<letter>, 2<letters separated by spaces>, 3 True or False.
+```
+
+Do not replace `<letter>` or `<letters separated by spaces>` with A, B, C, D, or E, and do not choose True or False in that line. Do not add a second example that fills them in.
+
 After the user answers, reveal each item as:
 
 ```markdown
