@@ -27,7 +27,9 @@ A scored session is written to `study/progress.md` the first time you finish one
 | “Is this Scrum?” | `Is planning poker required by Scrum?` | Required, allowed but not prescribed, or contradicts the Guide |
 | A mock sitting | `Mini-exam, 20 questions, 15 minutes` | Mixed questions. Coaching waits until you submit the set |
 | Teach it back | `Teach-back: I will explain the Daily Scrum` | You explain. The coach marks missing relationships and old wording |
-| One focus area | `Topic pack: Stakeholders and Customers` | A short catalog slice, 6 flip cards, and 5 questions |
+| One focus area | `Topic pack: Stakeholders and Customers` | A short catalog slice, 6 flip cards, and 5 questions for that area only |
+| Every key topic, one at a time | `Revisit the key topics` | Topic 1 of 12 only, read from a stored topic file. Say `next` for the following topic. The walk resumes where you stopped |
+| Refresh the stored Guide analysis | `Refresh the knowledge from the Scrum Guide` | Re-reads the Guide and updates the local entity, relationship, and topic files. An ordinary quiz does not do this |
 | Continue from misses | `Review what I missed` | Drills the tags you miss most often in `study/progress.md` |
 
 Focus-area names the coach uses: Empiricism, Scrum Values, Scrum Team, Events, Artifacts, Done, Self-Managing Teams, Facilitation, Coaching, Product Value, Product Backlog Management, Stakeholders & Customers.
@@ -89,6 +91,24 @@ The coach answers in 2020 terms: accountabilities, commitments, self-managing, D
 Classify these: velocity, Definition of Ready, burn-down chart, three Daily Scrum questions, Sprint Review as a release gate.
 ```
 
+**Revisit every key topic in order**
+
+```text
+Revisit the key topics, one at a time.
+```
+
+You get topic 1 of 12 (Empiricism): the Guide sense, the entities in that topic, the relationships that decide exam answers, and one trap. Nothing after that topic is taught yet.
+
+```text
+next
+```
+
+That advances to topic 2. `back` returns to the previous topic. `from the start` resets to Empiricism. `quiz this` asks 3 questions on the current topic and stays there until you say `next`.
+
+The order is Empiricism, Scrum Values, Scrum Team, Events, Artifacts, Done, Self-Managing Teams, Facilitation, Coaching, Product Value, Product Backlog Management, and Stakeholders & Customers. Each topic is already written in `.cursor/skills/psm-i-coach/knowledge/topics/`. A later session that says `revisit the key topics` continues at the next unshown topic. The coach does not re-analyze the Guide for that turn.
+
+The same walk is also in [revisit.html](revisit.html), next to this file. Open it in a browser, read one topic, then use Next. Each topic draws its relationships as a diagram, and the Relationships section opens with a framework map. Underlined words jump to the entity definition.
+
 **Sit a short mock, then continue tomorrow**
 
 ```text
@@ -102,16 +122,17 @@ Review what I missed, and start with flip cards for my weakest area.
 ## A study loop that fits the skill
 
 1. Analyze the Guide once, and keep the relationship map.
-2. Flash cards for entities you cannot define in one sentence.
-3. Flip cards for the relationships those entities have.
-4. A topic pack for one weak focus area.
-5. Scenarios and “who is accountable?” on that same area.
-6. A mini-exam when a topic feels familiar.
-7. Next session: review the miss log before starting a new topic.
+2. Revisit the 12 key topics one at a time, and say `next` when a topic is familiar.
+3. Flash cards for entities you cannot define in one sentence.
+4. Flip cards for the relationships those entities have.
+5. A topic pack for one weak focus area.
+6. Scenarios and “who is accountable?” on that same area.
+7. A mini-exam when a topic feels familiar.
+8. Next session: resume the topic walk, or review the miss log, before starting a new topic.
 
 ## What the coach will treat as out of bounds
 
-Scrum rules come from the current Scrum Guide page. If that page cannot be fetched, the coach says so and marks any leftover claim as unverified.
+Scrum rules in a normal session come from the local knowledge files, which were prepared from the November 2020 Scrum Guide. Ask to refresh those files when you want them checked against the current Guide page again. If that refresh cannot fetch the page, the stored files stay as they are.
 
 Exam logistics — number of questions, time limit, pass mark, and whether materials are allowed — are scrum.org assessment rules, not Guide content. Ask for them explicitly if you want the coach to check the current PSM I page.
 
@@ -122,6 +143,11 @@ Complementary practices can be discussed. They are not keyed as “Scrum require
 | Path | Purpose |
 | --- | --- |
 | `.cursor/skills/psm-i-coach/SKILL.md` | Coach instructions and mode router |
+| `.cursor/skills/psm-i-coach/knowledge/index.md` | Which file to open, revisit order, and how to refresh |
+| `.cursor/skills/psm-i-coach/knowledge/entities.md` | Canonical definitions. Edit here first |
+| `.cursor/skills/psm-i-coach/knowledge/relationships.md` | Canonical edges, each with an id, plus the relationship diagram |
+| `.cursor/skills/psm-i-coach/knowledge/topics/` | One serving file per key topic, in walk order |
 | `.cursor/skills/psm-i-coach/formats.md` | Question, card, and progress templates |
-| `.cursor/skills/psm-i-coach/traps.md` | Fallback checklist of entities, relationships, and non-Guide habits |
-| `study/progress.md` | Created after your first scored session |
+| `.cursor/skills/psm-i-coach/traps.md` | Exam distinctions and practices that are not Guide rules |
+| `revisit.html` | Browser copy of the 12 topics, the entity definitions, and the relationships |
+| `study/progress.md` | Created after your first scored session, and updated as the topic walk advances |

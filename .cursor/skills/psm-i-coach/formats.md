@@ -157,12 +157,33 @@ Next card: ...
 
 State item count and the user's minute budget before the first question. No coaching between items. At the end: score, percent, misses grouped by focus-area tag, then three follow-ups on the worst tag.
 
+## Revisit stop
+
+One topic only. Read that topic file and fill this shape from it. Do not pull in the next file or re-analyze the Guide.
+
+```markdown
+**Topic 4 of 12 — Events**
+Guide sense: one short paragraph. Paraphrase unless a clause must be quoted.
+Entities: Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective.
+Relationships:
+- Sprint contains the other four events.
+- Only the Product Owner may cancel a Sprint, and only if the Sprint Goal becomes obsolete.
+Trap: the three Daily Scrum questions are not required.
+Next: Artifacts. Say "next" to continue, "back" for Scrum Team, or "quiz this" for 3 questions before moving on.
+```
+
+After the user answers a "quiz this" set, score it, then repeat the same "Next:" line. Do not start the following topic in that message.
+
 ## Progress log
 
-Path: `study/progress.md` at the repo root. Update after a scored session. Do not log unscored reading.
+Path: `study/progress.md` at the repo root. Update after a scored session. Also update `## Revisit` whenever a revisit stop is shown, including an unscored one. Do not log other unscored reading.
 
 ```markdown
 # PSM I progress
+
+## Revisit
+- Next: knowledge/topics/05-artifacts.md (5 of 12)
+- Last shown: Events
 
 ## Weak areas
 - Events: 3
