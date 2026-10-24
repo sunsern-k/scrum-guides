@@ -50,7 +50,7 @@ Two modes use a different surface:
 ## How a quiz works
 
 1. You get the questions only. Select-all items do not say how many options are correct.
-2. Reply with your choices, for example `1C, 2A C E, 3 False`.
+2. Reply with a letter, a set of letters, or True or False for each question, in order. The coach shows that shape with placeholders, and does not fill in a sample that could be the key.
 3. The coach scores, explains each miss from the Guide, names the trap, and adds three follow-up questions on the weak areas.
 4. Best-answer and true/false are worth 1 point. A select-all item is worth 1 point only when your set matches exactly.
 
@@ -69,8 +69,10 @@ Quiz me with 8 questions. Mix best answer, select all that apply, and true/false
 ```
 
 ```text
-1C, 2A C E, 3 False, 4B, 5A D, 6 True, 7C, 8B
+1<letter>, 2<letters separated by spaces>, 3 True or False, and so on for each question.
 ```
+
+That line shows the shape of a reply. On a live quiz the coach leaves the placeholders empty, so the example is not an answer key.
 
 **Memorize a relationship, then a definition**
 
