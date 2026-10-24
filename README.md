@@ -1,8 +1,8 @@
 # PSM I coach
 
-A Cursor skill that coaches Professional Scrum Master I preparation from the [2020 Scrum Guide](https://scrumguides.org/scrum-guide.html). The Guide is the only source of Scrum rules. Industry habits (story points, the three Daily Scrum questions, Sprint 0, and the like) are labeled as habits, and they are never the correct answer.
+A skill that coaches Professional Scrum Master I preparation from the [2020 Scrum Guide](https://scrumguides.org/scrum-guide.html). It runs in Cursor and in Claude Code from the same files. The Guide is the only source of Scrum rules. Industry habits (story points, the three Daily Scrum questions, Sprint 0, and the like) are labeled as habits, and they are never the correct answer.
 
-Open this repository in Cursor and ask in chat. You do not need to name the skill. Mention PSM I, the Scrum Guide, a quiz, flip cards, or flash cards and the coach takes that mode.
+Open this repository and ask in chat. You do not need to name the skill. Mention PSM I, the Scrum Guide, a quiz, flip cards, or flash cards and the coach takes that mode. In Claude Code you can also type `/psm-i-coach`.
 
 ## Start a session
 
@@ -14,25 +14,38 @@ A scored session is written to `study/progress.md` the first time you finish one
 
 | You want | Say this | What you get |
 | --- | --- | --- |
-| The big picture | `Analyze the Scrum Guide` | Entity catalog, relationship map, must-know exam distinctions, and practices that are not in the Guide |
+| The big picture | `Analyze the Scrum Guide` | Entity catalog, relationship map, must-know exam distinctions, and practices that are not in the Guide. The map is drawn for chat in Cursor, and pasted as the stored diagram in Claude Code |
 | A mixed quiz | `Quiz me` | 8 questions: best answer, select-all-that-apply, and true/false. The key stays hidden until you answer |
 | A shorter or longer quiz | `Quiz me with 5 questions on Events and Done` | A quiz limited to the size and focus areas you name |
-| Relationship memory | `Make flip cards` | A deck you can reopen and flip. Default is two cards for each focus area |
-| One topic’s relationships | `Flip cards on Events` | Relationship cards for that topic only |
+| Relationship memory | `Make flip cards` | Two relationship cards for each focus area. Cursor opens them as a deck. Claude Code shows them one at a time in chat |
+| One topic’s relationships | `Flip cards on Events` | Relationship cards for that topic only, shown the same way as a full flip deck |
 | Definitions | `Flash cards` | One card per Guide entity: definition, where it sits, and what people confuse it with |
-| A few cards in chat | `Flash card me on Sprint Goal, one at a time` | Front first. The back appears after you try |
+| A few cards in chat | `Flash card me on Sprint Goal, one at a time` | Front first. The back appears after you try. This is also how Claude Code delivers every card deck |
 | A workplace situation | `Give me 3 scenarios` | A short situation and four actions. One action fits the Guide |
 | Accountability speed round | `Who is accountable? Ten questions` | One-line prompts: ordering, sizing, canceling a Sprint, the Definition of Done, and similar |
 | A pair you keep mixing up | `Distinguish Product Goal, Sprint Goal, and Definition of Done` | You fill the comparison, then the coach shows the Guide version |
 | “Is this Scrum?” | `Is planning poker required by Scrum?` | Required, allowed but not prescribed, or contradicts the Guide |
 | A mock sitting | `Mini-exam, 20 questions, 15 minutes` | Mixed questions. Coaching waits until you submit the set |
 | Teach it back | `Teach-back: I will explain the Daily Scrum` | You explain. The coach marks missing relationships and old wording |
-| One focus area | `Topic pack: Stakeholders and Customers` | A short catalog slice, 6 flip cards, and 5 questions for that area only |
+| One focus area | `Topic pack: Stakeholders and Customers` | A short catalog slice, 6 flip cards, and 5 questions for that area only. The questions match in both tools. The cards follow the flip-card rule for that tool |
 | Every key topic, one at a time | `Revisit the key topics` | Topic 1 of 12 only, read from a stored topic file. Say `next` for the following topic. The walk resumes where you stopped |
 | Refresh the stored Guide analysis | `Refresh the knowledge from the Scrum Guide` | Re-reads the Guide and updates the local entity, relationship, and topic files. An ordinary quiz does not do this |
 | Continue from misses | `Review what I missed` | Drills the tags you miss most often in `study/progress.md` |
 
 Focus-area names the coach uses: Empiricism, Scrum Values, Scrum Team, Events, Artifacts, Done, Self-Managing Teams, Facilitation, Coaching, Product Value, Product Backlog Management, Stakeholders & Customers.
+
+## What works in both, and what Claude Code does instead
+
+Cursor reads `.cursor/skills/psm-i-coach/`. Claude Code reads `.claude/skills/psm-i-coach`, a symlink to that same folder. Edit the files under `.cursor/skills/`. Both tools then see the change. Start Claude Code in this repository. A claude.ai chat or a Claude cloud session does not load this project folder; those use the skill after it is uploaded to the account.
+
+The prompts above are the same in both tools. These modes return the same kind of reply: quiz, scenario, who is accountable, distinguish, “is this Scrum?”, mini-exam, teach-back, the questions inside a topic pack, the one-topic revisit, review, refresh, and `study/progress.md`. [revisit.html](revisit.html) is a browser page, so it is the same wherever you open it.
+
+Two modes use a different surface:
+
+| You ask for | In Cursor | In Claude Code |
+| --- | --- | --- |
+| The relationship map (`Analyze the Scrum Guide`) | Sections A–D in chat. The stored diagram is formatted for the conversation. A canvas map is created when you ask to keep one. | The same four sections in chat. The diagram is the Mermaid block stored in `knowledge/relationships.md`, then the edge list. |
+| Flip cards, flash cards, and the cards inside a topic pack | A deck beside the chat. Click a card to flip it. The chat message is the topic list and the card count. Ask for a handful in chat when you want one card at a time. | One card at a time in the chat. The front comes first. Reply, and the back follows. There is no side deck to reopen. |
 
 ## How a quiz works
 
@@ -69,7 +82,7 @@ Flip cards on accountabilities: who orders the Product Backlog, who sizes, who s
 Flash cards for the three commitments only.
 ```
 
-Flip-card and flash-card decks open beside the chat so you can flip them again later. A small set stays in the conversation, one card at a time.
+In Cursor, flip-card and flash-card decks open beside the chat so you can flip them again later. A small set stays in the conversation, one card at a time. In Claude Code, every card stays in the conversation that way: front, your try, then the back.
 
 **Apply a rule to a situation**
 
@@ -142,7 +155,8 @@ Complementary practices can be discussed. They are not keyed as “Scrum require
 
 | Path | Purpose |
 | --- | --- |
-| `.cursor/skills/psm-i-coach/SKILL.md` | Coach instructions and mode router |
+| `.claude/skills/psm-i-coach` | Symlink to the folder below, so Claude Code loads the same coach |
+| `.cursor/skills/psm-i-coach/SKILL.md` | Coach instructions and mode router. This is the file to edit |
 | `.cursor/skills/psm-i-coach/knowledge/index.md` | Which file to open, revisit order, and how to refresh |
 | `.cursor/skills/psm-i-coach/knowledge/entities.md` | Canonical definitions. Edit here first |
 | `.cursor/skills/psm-i-coach/knowledge/relationships.md` | Canonical edges, each with an id, plus the relationship diagram |
